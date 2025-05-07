@@ -1,0 +1,2 @@
+# GEOSciAI2025_sub
+GEOSciAI2025に提出したコードetc
