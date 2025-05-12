@@ -80,7 +80,7 @@ def make_temporal_features(df, lags=24, windows=(3,6,12)):
 train, F_cols  = make_temporal_features(train)
 test,  _        = make_temporal_features(test)
 
-# 欠損補完（先頭分は線形補間→残り 0）
+# 欠損補完（先頭分は線形補間→残りは0）
 train[F_cols] = train[F_cols].interpolate(limit_direction="both").fillna(0)
 test[F_cols]  = test[F_cols].interpolate(limit_direction="both").fillna(0)
 
@@ -163,5 +163,4 @@ def cv_rmse(data, feat_cols, target="dst_t+24", n_split=5, seed=42):
     print(f"CV RMSE: {np.mean(rmses):.3f} ± {np.std(rmses):.3f}")
     return np.array(rmses)
 
-# 使い方
-_ = cv_rmse(train, FEATS)      # FEATS は前段コードで定義済み
+_ = cv_rmse(train, FEATS)
